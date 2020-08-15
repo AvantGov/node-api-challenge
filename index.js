@@ -1,14 +1,23 @@
-/*
-play this: https://www.youtube.com/watch?v=d-diB65scQU
+// * import depends + data 
+const express = require("express")
+const body_parser = require("body-parser")
+// const project_router = require('./Routers/project_router')
+// const action_rouer = require('./Routers/action_router')
 
-Sing along:
 
-here's a little code I wrote, please read the README word for word, don't worry, you got this
-in every task there may be trouble, but if you worry you make it double, don't worry, you got this
-ain't got no sense of what is REST? just concentrate on learning Express, don't worry, you got this
-your file is getting way too big, bring a Router and make it thin, don't worry, be crafty
-there is no data on that route, just write some code, you'll sort it out… don't worry, just hack it…
-I need this code, but don't know where, perhaps should make some middleware, don't worry, just hack it
 
-Go code!
-*/
+// * declaring server
+const server = express()
+const port = 4000
+
+
+// * implementing depends
+server.use(express.json())
+server.use(body_parser)
+// server.use(project_router)
+// server.use(action_router)
+
+// * launch
+server.listen(port, () => {
+	console.log(`Server running at http://localhost:${port}`)
+})
