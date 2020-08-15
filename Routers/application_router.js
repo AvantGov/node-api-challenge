@@ -62,7 +62,7 @@ router.post('/:id/actions', validate_action__schema(), (req, res) => {
 
 // * update a project by id 
 router.put('/:id', validate_project__record(), (req, res) => {
-    project_access.update(req.body)
+    project_access.update(req.params.id, req.body)
         .then((response) => {
             console.log(response)
             res.status(200).json({ message: 'post updated successfully'})
@@ -76,8 +76,9 @@ router.put('/:id', validate_project__record(), (req, res) => {
 
 
 // * update action by id 
-router.put('/:id/actions/:action_id', validate_action__record(), (req, res) => {
-    action_access.insert(req.params.action_id, req.body)
+router.put('/actions/:action_id', validate_action__record(), (req, res) => {
+    
+    action_access.update(req.params.action_id, req.body)
         .then((response) => {
             res.status(200).json({ message: 'action successfully updated' })
         })
